@@ -98,3 +98,4 @@ list.files(pattern = 'ggtern\\d+\\.png', full.names = TRUE) %>%  # This line use
 </details>
 <img src="https://github.com/loukesio/plots/blob/main/plots/ggtern.gif" width="400" />
 
+### 2. Make a voronoi diagram 
