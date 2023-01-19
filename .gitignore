@@ -2,6 +2,10 @@
 .Rhistory
 .Rapp.history
 
+# remove DSstore
+
+**/.DS_Store
+
 # Session Data files
 .RData
 
