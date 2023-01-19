@@ -1,4 +1,4 @@
-# plots
+# PLOTS
 This is a public repository which shows how to do fancy plots in R with simple data
 
 ### 1. Make a ternary plot with ggtern 
