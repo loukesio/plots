@@ -3,6 +3,22 @@ This is a public repository which shows how to do fancy plots in R with simple d
 
 ### 1. Make a ternary plot with ggtern 
 
+This is how the data looks like 
+
+```
+# > head(data)
+# # A tibble: 6 × 4
+#      x         y     z  time
+#   <dbl>    <dbl> <dbl> <int>
+# 1 0.893   0.268 0.672     1
+# 2 0.141   0.448 0.863     2
+# 3 0.00621 0.589 0.624     3
+# 4 0.479   0.204 0.385     4
+# 5 0.209   0.471 0.417     5
+# 6 0.756   0.973 0.674     6
+
+```
+
 <details><summary> code </summary>
 
 ``` r
@@ -32,6 +48,7 @@ library(here)                                   # define the directory you want 
 #________________
 
 data=tibble(x=runif(200),  y = runif(200),  z = runif(200), time=rep(seq(1:10),20))
+  
 
 #______________
 # ┌─┐┬  ┌─┐┌┬┐
