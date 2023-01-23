@@ -15,6 +15,7 @@
 
 suppressPackageStartupMessages(library(ggtern)) # library for loading the ggtern pacakge
 library(tidyverse)                              # library for loading the tidyverse package for data analysis
+library(here)                                   # define the directory you want to go 
 
 #________________
 # ┌┬┐┌─┐┌┬┐┌─┐
@@ -23,6 +24,8 @@ library(tidyverse)                              # library for loading the tidyve
 #________________
 
 data=tibble(x=runif(200),  y = runif(200),  z = runif(200), time=rep(seq(1:10),20))
+head(data)
+
 
 #______________
 # ┌─┐┬  ┌─┐┌┬┐
@@ -66,7 +69,7 @@ list.files(pattern = 'ggtern\\d+\\.png', full.names = TRUE) %>%  # This line use
   image_read() %>% 
   image_join() %>%                                               # This line joins the images together to form an animation
   image_animate(fps=4) %>%                                       # This line sets the animation speed to 4 frames per second
-  image_write("ggtern.gif")                                      # This line writes the animation as a GIF file
+  image_write("plots/ggtern.gif")                                      # This line writes the animation as a GIF file
 
 
 
