@@ -117,8 +117,8 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1            
   
   <details><summary> code </summary>
 
-    ```
-    #___________________________________________________________________________
+```
+#___________________________________________________________________________
 #
 # ╦ ╦┌─┐┬┌─┐┬ ┬┌┬┐┌─┐┌┬┐╔╦╗┬─┐┌─┐┌─┐┌┬┐┌─┐┌─┐┌─┐  ┌─┐┌─┐┌─┐┬┌─┌─┐┌─┐┌─┐
 # ║║║├┤ ││ ┬├─┤ │ ├┤  ││ ║ ├┬┘├┤ ├┤ │││├─┤├─┘└─┐  ├─┘├─┤│  ├┴┐├─┤│ ┬├┤ 
@@ -158,9 +158,9 @@ drawTreemap(                             #the function draws the Treemap
   position = c(1, 1),                    #I am not sure what it does
   title = "Cars per gear"
 )
-
-    ```
-  </details>
+```
+ 
+</details>
     
-<img src="https://github.com/loukesio/plots/blob/main/plots/ggtern.gif" width="400" />
+<img src="https://github.com/loukesio/plots/blob/main/plots/weighted_voronoi.png" width="400" />
       
