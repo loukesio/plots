@@ -167,7 +167,7 @@ drawTreemap(                             #the function draws the Treemap
 
 ### 3. Raincloud plot 
 
-data
+The data shows body characteristics of penguings in different islands
 ```
 # A tibble: 342 × 9
 # Groups:   species [3]
