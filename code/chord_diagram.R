@@ -1,10 +1,19 @@
-library(countrycode)
-library(tidyverse)
-library(circlize)
-library(ggplot2)
-library(cowplot)
-library(grid)
-library(ggplotify) 
+#__________________________________________________________________________________________________________________
+# 
+#  ██████╗██╗  ██╗ ██████╗ ██████╗ ██████╗     ██████╗ ██╗ █████╗  ██████╗ ██████╗  █████╗ ███╗   ███╗███████╗
+# ██╔════╝██║  ██║██╔═══██╗██╔══██╗██╔══██╗    ██╔══██╗██║██╔══██╗██╔════╝ ██╔══██╗██╔══██╗████╗ ████║██╔════╝
+# ██║     ███████║██║   ██║██████╔╝██║  ██║    ██║  ██║██║███████║██║  ███╗██████╔╝███████║██╔████╔██║███████╗
+# ██║     ██╔══██║██║   ██║██╔══██╗██║  ██║    ██║  ██║██║██╔══██║██║   ██║██╔══██╗██╔══██║██║╚██╔╝██║╚════██║
+# ╚██████╗██║  ██║╚██████╔╝██║  ██║██████╔╝    ██████╔╝██║██║  ██║╚██████╔╝██║  ██║██║  ██║██║ ╚═╝ ██║███████║
+#  ╚═════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═════╝     ╚═════╝ ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝
+#_________________________________________________________________________________________________________________
+
+library(countrycode)  # pacakge for converting country names, ISO codes, and other country-related information
+library(tidyverse)    # data manipulation, visualization, and analysis
+library(circlize)     # package for creating circular plots, heatmaps, and chord diagrams
+library(cowplot)      # functions for creating and arranging complex plots, including multi-panel figures.
+library(grid)         # its a graphics engine for packages like ggplot2
+library(ggplotify)    # a package for converting complex plots into 'ggplot2' objects, making it easier to customize and modify the appearance of the plots.
 
 #import data from tidytuesday github
 df <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-03-08/erasmus.csv')
@@ -65,20 +74,25 @@ chord_data[chord_data=="Netherlands (the)"]<-"Netherlands"
 
 #create custom color palette, sites like https://coolors.co/ make it easy
 pal<-c("#002765","#0061fd","#1cc6ff","#00b661","#5bf34d","#ffdd00","#ff7d00","#da2818","#ff006d","#8f00ff","#453435","black","grey80")
+pal2=c("#f94144", "#f3722c","#f8961e","#f9844a","#f9c74f","#90be6d","#43aa8b","#4d908e","#577590", "#277da1","#453435","black","grey80")
 
 #based on tutorial from https://jokergoo.github.io/circlize_book/book/the-chorddiagram-function.html
-chordDiagram(chord_data, grid.col = pal)
+chordDiagram(chord_data, grid.col = pal2)
 
 #convert chordDiagram (base plot) to grid plot to combine with ggplot annotations and theme details
-p<-recordPlot()
-as.ggplot(ggdraw(p))+
+p<-recordPlot()  # records the previous chord diagram and saves it as `p`. This is useful for creating complex plots that involve multiple layers, or for creating a base plot that can be modified later.
+
+as.ggplot(ggdraw(p))+   # you can convert now  chord diagram `p` to a ggplot object
   labs(title="ERASMUS STUDENT MOBILITY",
        subtitle="Graphic depicts movement of participants between top participating countries from 2014 to 2020",
-       caption="Data from Data.Europa | Chart by @tanya_shapiro")+
+       caption="Data from Data.Europa")+
   theme(text=element_text(family="Arial"),
-        plot.title=element_text(hjust=0.5, face="bold", size=18),
-        plot.subtitle=element_text(hjust=0.5, size=12, margin=margin(t=10)),
-        plot.caption=element_text(size=10, hjust=0.95, margin=margin(b=12)),
-        plot.margin   =margin(t=20))
+        plot.title=element_text(hjust=0.5, face="bold", size=18),                
+        plot.subtitle=element_text(hjust=0.5, size=12, margin=margin(t=10)), # horizontal justification = 0.5, top margin to 10 units
+        plot.caption=element_text(size=10, hjust=0.95, margin=margin(b=12)), # sets the bottom maring to 12 units
+        plot.margin=margin(t=20)). # sets the top margin to 20 units
 
-ggsave("erasmus.jpeg", height=9, width=9)
+ggsave("plots/erasmus.png", width = 30, height = 25, units = "cm")
+
+
+
