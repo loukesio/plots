@@ -94,5 +94,3 @@ as.ggplot(ggdraw(p))+   # you can convert now  chord diagram `p` to a ggplot obj
 
 ggsave("plots/erasmus.png", width = 30, height = 25, units = "cm")
 
-
-
