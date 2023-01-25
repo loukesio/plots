@@ -328,7 +328,7 @@ ggsave("plots/rainclound.png", width = 30, height = 25, units = "cm")
 ```
 </details>
 
-<img src="https://github.com/loukesio/plots/blob/main/plots/rainclound.png" width="400" />
+<img src="https://github.com/loukesio/plots/blob/main/plots/rainclound.png" width="600" />
 
 
 ### 4. Chord Diagram
@@ -455,4 +455,4 @@ ggsave("erasmus.jpeg", height=9, width=9)
 
 </details>
 
-<img src="https://github.com/loukesio/plots/blob/main/plots/erasmus.png" width="400" />
+<img src="https://github.com/loukesio/plots/blob/main/plots/erasmus.png" width="600" />
