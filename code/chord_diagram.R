@@ -83,14 +83,14 @@ chordDiagram(chord_data, grid.col = pal2)
 p<-recordPlot()  # records the previous chord diagram and saves it as `p`. This is useful for creating complex plots that involve multiple layers, or for creating a base plot that can be modified later.
 
 as.ggplot(ggdraw(p))+   # you can convert now  chord diagram `p` to a ggplot object
-  labs(title="ERASMUS STUDENT MOBILITY",
+  labs(title="GROseq data",
        subtitle="Graphic depicts movement of participants between top participating countries from 2014 to 2020",
        caption="Data from Data.Europa")+
   theme(text=element_text(family="Arial"),
         plot.title=element_text(hjust=0.5, face="bold", size=18),                
         plot.subtitle=element_text(hjust=0.5, size=12, margin=margin(t=10)), # horizontal justification = 0.5, top margin to 10 units
-        plot.caption=element_text(size=10, hjust=0.95, margin=margin(b=12)), # sets the bottom maring to 12 units
-        plot.margin=margin(t=20)). # sets the top margin to 20 units
+        plot.caption=element_text(size=10, hjust=0.95, margin=margin(b=12)), # sets the bottom margim to 12 units
+        plot.margin=margin(t=20)) # sets the top margin to 20 units
 
 ggsave("plots/erasmus.png", width = 30, height = 25, units = "cm")
 
