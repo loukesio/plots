@@ -487,6 +487,7 @@ head(penguins)
   
 <details><summary> code </summary>
 
+  ```
   penguins %>%
   drop_na() %>%                                       # remove rows with missing values
   ggplot(aes(species, bill_length_mm, group = sex)) + # create a scatter plot of species vs. bill length, with sex grouping
@@ -502,16 +503,16 @@ head(penguins)
   ) +
   scale_color_manual(values = c("darkorange", "purple")) +   # set manual color scale for the points based on sex
 theme_bw()
-
+```
  </details>
 
 **Plot B**
 
-    <img src="https://github.com/loukesio/plots/blob/main/plots/plotB_GroupedDots.png" width="600" />
+<img src="https://github.com/loukesio/plots/blob/main/plots/plotB_GroupedDots.png" width="600" />
 
-  
- <details><summary> code </summary>
-   
+<details><summary> code </summary>
+
+  ```
    penguins %>%
   drop_na() %>%                                            # remove rows with missing values
   ggplot(aes(sex, bill_length_mm, group = sex)) +          # create a ggplot object with x-axis as sex and y-axis as bill_length_mm
@@ -530,7 +531,7 @@ theme_bw()
     strip.background.x = element_blank()                     # remove the background color of facet labels in the x-direction
   ) +
 guides(color = "none")        
-   
-    </details>
+   ```
+   </details>
 
 
