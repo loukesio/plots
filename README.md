@@ -488,50 +488,58 @@ head(penguins)
 <details><summary> code </summary>
 
   ```
-  penguins %>%
-  drop_na() %>%                                       # remove rows with missing values
-  ggplot(aes(species, bill_length_mm, group = sex)) + # create a scatter plot of species vs. bill length, with sex grouping
-  geom_jitter(aes(color = sex),                       # add jittered points with colors based on sex  
-              size = 3,
-              alpha = 0.8,
-              position = position_jitterdodge()         # this is the key for creating a grouped dotted plot
+  # Load the dataset and remove rows with missing values
+penguins %>%
+  drop_na() %>% 
+  
+  # Initialize the ggplot with species and bill length, grouped by sex
+  ggplot(aes(species, bill_length_mm, group = sex)) +
+  
+  # Add jittered points to visualize data distribution, colored by sex
+  geom_jitter(
+    aes(color = sex),              # Map colors to the 'sex' variable
+    size = 5,                      # Set the size of the points
+    alpha = 0.8,                   # Adjust transparency of points
+    position = position_jitterdodge() # Jitter points within groups
   ) +
-  stat_summary(                                         # add summary statistics (mean and standard deviation) with error bars
-    fun.data = "mean_sdl",                              # function to calculate mean and standard deviation
-    fun.args = list(mult = 1),                          # usually it gives a bar with 2x standard deviation, with mult=1, you make sure that you use 1 sd
-    position = position_dodge(width = .75)              # position the summary statistics to look like the grouped dots
+  
+  # Customize the color palette for the sexes
+  scale_color_manual(
+    values = c("darkorange", "purple") # Specify colors for the groups
   ) +
-  scale_color_manual(values = c("darkorange", "purple")) +   # set manual color scale for the points based on sex
-theme_bw()
-```
- </details>
-
-**Plot B**
-
-<img src="https://github.com/loukesio/plots/blob/main/plots/plotB_GroupedDots.png" width="600" />
-
-<details><summary> code </summary>
-
-  ```
-   penguins %>%
-  drop_na() %>%                                            # remove rows with missing values
-  ggplot(aes(sex, bill_length_mm, group = sex)) +          # create a ggplot object with x-axis as sex and y-axis as bill_length_mm
-  geom_jitter(aes(color = sex),                            # add a jittered scatterplot with points colored by sex
-              size = 3,
-              alpha = 0.8
-  ) +
+  
+  # Add error bars to represent mean ± standard deviation
   stat_summary(
-    fun.data = "mean_sdl", fun.args = list(mult = 1)        # add a summary statistic of the mean and standard deviation, with mean multiplied by 1
+    fun.data = "mean_sdl",             # Function to calculate mean and SD
+    fun.args = list(mult = 1),         # Use 1 standard deviation
+    position = position_dodge(width = 0.75), # Align error bars for grouped data
+    geom = "errorbar",                 # Add error bars
+    linewidth = 1.2,                   # Set the thickness of error bar lines
+    width = 0.1                        # Set the width of the error bars
   ) +
-  scale_color_manual(values = c("darkorange", "purple")) +  # manually set the colors for each sex
-  facet_wrap(~species, strip.position = "bottom") +         # add facets to the plot based on species
-  theme(
-    panel.spacing.x = unit(0, "pt"),                         # set the horizontal spacing between panels to 0 points
-    strip.placement = "outside",                             # place facet labels outside of the plot area
-    strip.background.x = element_blank()                     # remove the background color of facet labels in the x-direction
+  
+  # Add points to represent the mean for each group
+  stat_summary(
+    fun = "mean",                      # Calculate the mean
+    geom = "point",                    # Represent mean with points
+    position = position_dodge(width = 0.75), # Align mean points with error bars
+    size = 6,                          # Set the size of mean points
+    shape = 21,                        # Use a filled circle for the mean
+    fill = "#333333",                  # Fill color for the mean point
+    stroke = 0                         # Border thickness for mean point
   ) +
-guides(color = "none")        
-   ```
-   </details>
-
+  
+  # Apply a custom theme (assumed to be defined elsewhere in your script)
+  custom_theme() +
+  
+  # Add labels for the axes and title
+  labs(
+    x = "Species",                     # Label for the x-axis
+    y = "Bill Length (mm)",            # Label for the y-axis
+    title = "Bill Length by Species and Sex" # Title of the plot
+  ) +
+  
+  # Place the legend at the bottom of the plot
+  theme(legend.position = "bottom")
+```
 
